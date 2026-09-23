@@ -1,25 +1,53 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>3D 沉浸式旋转相册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#160f19">
+    <title>6 Hoà và Thỳ Dưn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Lora:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="photos.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-
-<div class="tips">拖拽旋转 · 滚轮缩放 · 点击查看大图</div>
-
-<div id="perspective">
-    <div id="wrap"></div>
-    <div id="reflection-wrap"></div>
-</div>
-
-<div id="modal">
-    <span id="close-modal">&times;</span>
-    <img id="modal-img" alt="">
-</div>
-
-<script src="script.js"></script>
+    <div class="ambience" aria-hidden="true"></div>
+    <header class="anniversary">
+        <p class="eyebrow">100 ngày bên nhau</p>
+        <h1>6 Hoà <span>&amp;</span> Thỳ Dưn</h1>
+        <!-- Điền ngày thật, ví dụ: <time datetime="2024-02-14">14.02.2024</time> -->
+        <p class="anniversary-date">100 ngày, và còn thật nhiều ngày nữa…</p>
+    </header>
+    <main id="perspective" aria-label="Album ảnh kỷ niệm" aria-describedby="album-tips">
+        <div id="wrap"></div>
+    </main>
+    <footer class="controls">
+        <nav id="album-groups" aria-label="Chọn nhóm ảnh" hidden>
+            <button id="previous-group" type="button" aria-label="Nhóm ảnh trước">← Trước</button>
+            <span id="group-status" role="status"></span>
+            <button id="next-group" type="button" aria-label="Nhóm ảnh tiếp theo">Tiếp →</button>
+        </nav>
+        <p id="album-tips">Kéo để xoay · Chạm ảnh để xem lớn · Cuộn để thu phóng</p>
+        <button id="open-letter" type="button">Một lời nhắn dành cho em 💌</button>
+        <button id="toggle-motion" type="button" aria-pressed="false">Tạm dừng xoay</button>
+    </footer>
+    <dialog id="modal" aria-label="Ảnh kỷ niệm phóng lớn">
+        <button id="close-modal" type="button" aria-label="Đóng ảnh">×</button>
+        <img id="modal-img" alt="">
+        <p id="modal-caption"></p>
+    </dialog>
+    <dialog id="letter" aria-labelledby="letter-title">
+        <article class="letter-paper">
+            <button id="close-letter" class="close-letter" type="button" aria-label="Đóng thư">×</button>
+            <p class="eyebrow">Một chút thương gửi em</p>
+            <h2 id="letter-title">Gửi Thỳ Dưn,</h2>
+            <!-- Nội dung thư mẫu: thay bằng lời nhắn của riêng hai bạn. -->
+            <p>100 ngày có em, những điều bình thường cũng trở nên đáng nhớ. Cảm ơn baxa vì những nụ cười, những lần lắng nghe và những khoảnh khắc ở cạnh nhau.</p>
+            <p>Mong rằng sau này, chúng mình vẫn dành cho nhau cơ hội để dịu dàng như hôm nay. Cùng thêm thật nhiều tấm ảnh, thật nhiều câu chuyện và nhiều ngày bên nhau.</p>
+            <p class="signature">Thương baxa,<br>6 Hoà ♡</p>
+        </article>
+    </dialog>
 </body>
 </html>

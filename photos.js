@@ -1,0 +1,25 @@
+// Thêm ảnh vào img/, rồi thêm một dòng trong danh sách này.
+// Có thể dùng tên bất kỳ và định dạng JPG, PNG, WebP…
+// Ví dụ: 'img/photo11.jpg',
+// Hoặc kèm chú thích: { src: 'img/di-choi.jpg', caption: 'Một ngày bên em' },
+window.ALBUM_PHOTOS = [
+    { src: 'img/photo1.jpg', caption: 'Một chút thương' },
+    { src: 'img/photo2.jpg', caption: 'Có em ở đây' },
+    { src: 'img/photo3.jpg', caption: 'Ngày mình bên nhau' },
+    { src: 'img/photo4.jpg', caption: 'Giữ lại nụ cười' },
+    { src: 'img/photo5.jpg', caption: 'Bình yên là em' },
+    { src: 'img/photo6.jpg?v=2', caption: 'Thêm một kỷ niệm' },
+    { src: 'img/photo7.PNG', caption: 'Thương từng khoảnh khắc' },
+    { src: 'img/photo8.jpg', caption: 'Chúng mình' },
+    { src: 'img/photo9.PNG', caption: 'Cùng nhau nhé' },
+    { src: 'img/photo10.jpg', caption: 'Còn nhiều ngày nữa' },
+    { src: 'img/82FB7ECF-C4A9-4AA0-A582-BA2B183D166A.JPG', caption: 'Một ngày thật vui' },
+    { src: 'img/FullSizeRender.jpg?v=2', caption: 'Bên nhau thật gần' },
+    { src: 'img/IMG_7434.jpg?v=2', caption: 'Gửi em chút nắng' },
+    { src: 'img/IMG_7477.jpg', caption: 'Nhớ mãi hôm nay' },
+    { src: 'img/IMG_8116.PNG', caption: 'Mình cùng đi nhé' },
+    { src: 'img/IMG_8302 2.JPG', caption: 'Thương những điều nhỏ' },
+    { src: 'img/IMG_8309.JPG', caption: 'Có nhau là đủ' },
+    { src: 'img/IMG_8541.jpg?v=2', caption: 'Ngày đẹp có em' },
+    { src: 'img/temp_image_C1C91BAB-DBB8-47EF-8B0B-2E0FBDF6AFE7.JPG', caption: 'Viết tiếp chuyện mình' },
+];

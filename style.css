@@ -1,79 +1,111 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-html, body {
-    width: 100%;
-    height: 100%;
-    background: #000;
-    overflow: hidden;
-    user-select: none;
-}
-.tips {
-    position: fixed;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #ccc;
-    font-size: 12px;
-    z-index: 10;
-}
+* { box-sizing: border-box; }
+:root { color-scheme: dark; font-family: system-ui, sans-serif; background: #160f19; color: #fff0ec; }
+body { margin: 0; min-height: 100svh; overflow-x: hidden; background: radial-gradient(ellipse at 50% 55%, #49303d 0, #211620 45%, #160f19 80%); }
+.anniversary { position: relative; z-index: 2; text-align: center; padding: 36px 20px 0; }
+.eyebrow { margin: 0 0 12px; color: #e6b2ac; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
+h1 { margin: 0; font-family: Georgia, serif; font-weight: 400; font-size: clamp(28px, 5vw, 52px); }
+.anniversary-date { color: #d6b9bd; font-size: 14px; letter-spacing: .06em; }
+#perspective { height: max(340px, calc(100svh - 250px)); width: 100%; display: flex; align-items: center; justify-content: center; perspective: 1200px; position: relative; touch-action: pan-y pinch-zoom; overflow: hidden; }
+#wrap { position: relative; width: 0; height: 0; transform-style: preserve-3d; transform: rotateX(-12deg); }
+.photo { position: absolute; width: 140px; height: 180px; left: -70px; top: -90px; padding: 0; border: 3px solid #f5dfd7; border-radius: 9px; background: #33222d; cursor: pointer; transform-style: preserve-3d; touch-action: none; box-shadow: 0 12px 28px #0005; }
+.photo img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 5px; user-select: none; }
+.photo .reflection { position: absolute; top: calc(100% + 14px); left: 0; transform: scaleY(-1); opacity: .22; mask-image: linear-gradient(to top, #000, transparent 75%); pointer-events: none; }
+button { font: inherit; }
+button:focus-visible { outline: 3px solid #ffd3aa; outline-offset: 6px; }
+.controls { position: relative; z-index: 2; text-align: center; padding: 0 16px 24px; color: #d6b9bd; font-size: 12px; }
+#toggle-motion { border: 1px solid #79555e; border-radius: 24px; padding: 9px 18px; color: #ffe5dc; background: #ffffff08; cursor: pointer; }
+#modal { position: fixed; inset: 0; width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 64px 20px 28px; border: 0; background: #120d15f5; color: #fff0ec; }
+#modal[open] { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#modal::backdrop { background: #000b; }
+#modal-img { max-width: 100%; max-height: calc(100dvh - 150px); object-fit: contain; border-radius: 10px; box-shadow: 0 16px 60px #0006; }
+#modal-caption { font-size: 13px; color: #d6b9bd; }
+#close-modal { position: absolute; top: 12px; right: 16px; width: 44px; height: 44px; border: 1px solid #79555e; border-radius: 50%; background: #33222d; color: white; font-size: 30px; cursor: pointer; }
+@media (max-width: 600px) { .anniversary { padding-top: 28px; } .photo { width: 100px; height: 136px; left: -50px; top: -68px; } }
+@media (prefers-reduced-motion: no-preference) { #modal[open] #modal-img { animation: reveal .2s ease-out; } @keyframes reveal { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } } }
 
-#perspective {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    perspective: 1200px;
-    position: relative;
-}
-
-#wrap {
-    position: relative;
-    width: 0;
-    height: 0;
-    transform-style: preserve-3d;
-    transform: rotateX(-15deg);
-}
-
-#wrap img {
+/* Typography and keepsake details */
+:root { font-family: 'Be Vietnam Pro', system-ui, sans-serif; }
+h1, h2, .signature { font-family: 'Lora', Georgia, serif; font-style: italic; }
+h1 { font-size: clamp(30px, 5.5vw, 62px); line-height: 1.4; text-shadow: 0 4px 32px #f2adbb28; }
+h1 span { color: #dba2a9; font-size: .8em; }
+.anniversary-date { font-size: clamp(11px, 2.6vw, 14px); line-height: 1.8; }
+#perspective { height: max(360px, calc(100svh - 310px)); }
+.photo { height: 202px; top: -101px; padding: 7px 7px 0; border: 0; border-radius: 3px; background: #fff1de; box-shadow: 0 18px 35px #0006, 0 0 24px #f5b8b010; }
+.photo > img:not(.reflection) { height: calc(100% - 32px); border-radius: 1px; }
+.photo-caption { display: flex; align-items: center; justify-content: center; height: 32px; color: #72494e; font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 10px; white-space: nowrap; }
+.photo .reflection { height: calc(100% - 32px); opacity: .12; }
+.controls { max-width: 640px; margin: auto; line-height: 1.8; }
+#open-letter { display: block; margin: 16px auto 12px; border: 1px solid #dba2a96b; border-radius: 30px; padding: 13px 24px; background: linear-gradient(120deg, #b36c7c, #864556); box-shadow: 0 6px 28px #bd768b25; color: #fff5ed; cursor: pointer; font-size: 13px; }
+#toggle-motion { font-size: 11px; padding: 6px 14px; }
+.ambience { position: fixed; inset: 0; overflow: hidden; pointer-events: none; background: radial-gradient(ellipse at 50% 55%, #e78a9b12, transparent 60%); }
+.firefly { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #ffdbc1; box-shadow: 0 0 12px 3px #e9ae8555; opacity: .35; }
+body { isolation: isolate; }
+.ambience { z-index: -1; }
+.shooting-star {
     position: absolute;
-    width: 140px;
-    height: 180px;
-    margin-left: -70px;
-    margin-top: -90px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(255,255,255,0.2);
-    backface-visibility: visible;
-    object-fit: cover;
-    cursor: pointer;
-    -webkit-box-reflect: below 10px linear-gradient(transparent 30%, rgba(0,0,0,0.5));
+    width: clamp(80px, 15vw, 180px);
+    height: 2px;
+    border-radius: 100%;
+    background: linear-gradient(to right, transparent, #efb9cc88 65%, #fff3df);
+    filter: drop-shadow(0 0 5px #f4bacb);
+    transform: rotate(38deg);
+    transform-origin: right center;
+    opacity: 0;
 }
-
-#modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.95);
-    z-index: 999;
-    align-items: center;
-    justify-content: center;
-}
-#modal-img {
-    max-width: 92%;
-    max-height: 92%;
-    object-fit: contain;
-    border-radius: 10px;
-}
-#close-modal {
+.shooting-star::after {
+    content: '';
     position: absolute;
-    top: 15px;
-    right: 20px;
-    color: #fff;
-    font-size: 32px;
-    cursor: pointer;
-    z-index: 1000;
+    right: -1px;
+    top: -1px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #fff3df;
+    box-shadow: 0 0 8px #ffe0cf;
 }
+.touch-heart { position: fixed; pointer-events: none; color: #f0a5b4; z-index: 5; font-size: 24px; animation: heart-rise 1.3s ease-out forwards; }
+#modal { background: #120d15cc; backdrop-filter: blur(12px); }
+#modal-img { border: 7px solid #fff1de; border-radius: 3px; }
+#letter { width: min(540px, calc(100% - 32px)); max-height: calc(100svh - 48px); padding: 0; border: 0; border-radius: 8px; background: #fff3e4; color: #62434b; box-shadow: 0 24px 100px #0006; }
+#letter::backdrop { background: #120d15bb; backdrop-filter: blur(10px); }
+.letter-paper { position: relative; padding: 48px clamp(24px, 6vw, 48px) 32px; background: linear-gradient(135deg, #fff9ef, #f7e4d6); }
+.letter-paper .eyebrow { color: #9c6371; font-size: 10px; }
+.letter-paper h2 { font-size: 30px; font-weight: 400; }
+.letter-paper p { font-size: 14px; line-height: 2; }
+.letter-paper .signature { font-size: 22px; text-align: right; color: #a56173; }
+.close-letter { position: absolute; top: 8px; right: 10px; width: 44px; height: 44px; border: 0; background: transparent; color: #81505e; font-size: 28px; cursor: pointer; }
+@media (max-width: 600px) {
+    .photo { height: 158px; top: -79px; padding: 5px 5px 0; }
+    .photo-caption { font-size: 8px; height: 27px; }
+    .photo > img:not(.reflection), .photo .reflection { height: calc(100% - 27px); }
+    .controls { font-size: 10px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .shooting-star { animation: meteor-flight var(--meteor-duration) linear var(--meteor-delay) infinite; }
+    .firefly { animation: drift var(--duration) ease-in-out var(--delay) infinite alternate; }
+    #modal[open] { animation: fade-in .3s ease-out; }
+    #modal[open] #modal-img { animation: reveal .4s cubic-bezier(.2,.7,.2,1); }
+    #letter[open] { animation: reveal .4s ease-out; }
+    #open-letter, .photo { transition: box-shadow .25s ease, filter .25s ease; }
+    #open-letter:hover { filter: brightness(1.12); box-shadow: 0 8px 36px #bd768b55; }
+    .photo:hover { box-shadow: 0 20px 40px #0007, 0 0 24px #f5b8b044; }
+}
+.motion-paused .firefly { animation-play-state: paused; }
+.motion-paused .shooting-star { animation-play-state: paused; }
+@keyframes meteor-flight {
+    0% { opacity: 0; transform: translate3d(-12vw, -9.4vw, 0) rotate(38deg); }
+    2% { opacity: .8; }
+    20% { opacity: .6; }
+    28%, 100% { opacity: 0; transform: translate3d(42vw, 32.8vw, 0) rotate(38deg); }
+}
+@media (max-width: 600px) { .shooting-star:nth-child(n + 9) { display: none; } }
+@keyframes drift { from { transform: translate(-12px, 20px); opacity: .15; } to { transform: translate(22px, -35px); opacity: .7; } }
+@keyframes heart-rise { from { transform: translate(-50%, -50%) scale(.6); opacity: 1; } to { transform: translate(-50%, -110px) rotate(15deg) scale(1.3); opacity: 0; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .touch-heart { display: none; } }
+
+#album-groups:not([hidden]) { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+#album-groups button { border: 1px solid #79555e; border-radius: 24px; padding: 8px 14px; color: #ffe5dc; background: #ffffff08; cursor: pointer; }
+#album-groups button:disabled { opacity: .35; cursor: default; }
+.photo-caption { overflow: hidden; text-overflow: ellipsis; display: block; line-height: 32px; }
+@media (max-width: 600px) { .photo-caption { line-height: 27px; } }
