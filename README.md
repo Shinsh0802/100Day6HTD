@@ -85,5 +85,5 @@
 
 3. Lưu và tải lại trang. Nếu xuất bản, đưa cả ảnh mới và `photos.js` lên hosting.
 
-Số ảnh và góc xoay tự cập nhật. Mỗi nhóm có tối đa 10 ảnh; nút Trước/Tiếp xuất hiện khi có nhiều nhóm. Ảnh không có chú thích sẽ dùng “Kỷ niệm N”. Đổi thứ tự dòng để đổi thứ tự ảnh; xóa dòng để bỏ ảnh khỏi album. Trang tĩnh không tự quét thư mục, nên cần thêm tên ảnh vào danh sách.
+Số ảnh và góc xoay tự cập nhật. Mỗi nhóm có tối đa 10 ảnh; nút Trước/Tiếp xuất hiện khi có nhiều nhóm. Ảnh không có chú thích sẽ dùng “Khoảnh khắc N”. Đổi thứ tự dòng để đổi thứ tự ảnh; xóa dòng để bỏ ảnh khỏi album. Trang tĩnh không tự quét thư mục, nên cần thêm tên ảnh vào danh sách.
 # 100Day6HTD

@@ -16,7 +16,7 @@ const letter = document.getElementById('letter');
 let velocity = 0;
 const album = window.ALBUM_PHOTOS.map((photo, index) => ({
     src: typeof photo === 'string' ? photo : photo.src,
-    caption: (typeof photo === 'object' && photo.caption) || `Kỷ niệm ${index + 1}`,
+    caption: (typeof photo === 'object' && photo.caption) || `Khoảnh khắc ${index + 1}`,
 }));
 const groupSize = 10;
 let currentGroup = 0;
@@ -74,11 +74,11 @@ function showGroup(group) {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'photo';
-    button.setAttribute('aria-label', `Xem ảnh kỷ niệm ${i}`);
+    button.setAttribute('aria-label', `Xem ảnh của chúng mình ${i}`);
     const img = document.createElement('img');
     img.src = photo.src;
     img.decoding = 'async';
-    img.alt = `Ảnh kỷ niệm ${i}`;
+    img.alt = `Ảnh của chúng mình ${i}`;
     img.draggable = false;
     const reflection = img.cloneNode();
     reflection.alt = '';
@@ -101,12 +101,12 @@ function showGroup(group) {
     groupControls.hidden = groupCount <= 1;
     groupStatus.textContent = album.length
         ? `Nhóm ${currentGroup + 1} / ${groupCount} · ${album.length} ảnh`
-        : 'Chưa có ảnh kỷ niệm';
+        : 'Chưa có ảnh trong album';
     previousGroup.disabled = currentGroup === 0;
     nextGroup.disabled = currentGroup >= groupCount - 1;
     if (!album.length) {
         const empty = document.createElement('p');
-        empty.textContent = 'Chưa có ảnh kỷ niệm';
+        empty.textContent = 'Chưa có ảnh trong album';
         wrap.append(empty);
     }
     arrange();
